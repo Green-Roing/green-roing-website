@@ -81,7 +81,7 @@ function Portfolio() {
               Transforming <span className="text-primary">Communities</span> Through Recycling
             </h1>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed">
-              Discover how ScrapBiz has helped businesses, communities, and institutions across India achieve their
+              Discover how Green Roing has helped businesses, communities, and institutions across India achieve their
               sustainability goals while generating significant value from their scrap materials.
             </p>
           </div>

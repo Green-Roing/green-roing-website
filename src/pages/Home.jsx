@@ -22,6 +22,17 @@ import { Link } from "react-router-dom";
 import DownloadApp from "../components/DownloadApp";
 
 const Home = () => {
+
+   const handleScroll = (href) => {
+    // href should be like "#download", "#home", etc.
+    const section = document.querySelector(href);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // fallback: if section not found, try to jump (safe fallback)
+      window.location.hash = href;
+    }
+  };
   const services = [
     {
       icon: <Truck className="h-12 w-12 text-primary" />,
@@ -88,7 +99,12 @@ const Home = () => {
               contributing to a cleaner environment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 md:justify-start justify-center">
-              <Button asChild size="lg" className="text-lg px-8 py-6">
+              <Button
+               onClick={(e) => {
+                  e.preventDefault();
+                  handleScroll("#contact");
+                }}
+              asChild size="lg" className="text-lg px-8 py-6">
                 <Link to="#contact">Contact Us</Link>
               </Button>
               <Button

@@ -17,6 +17,17 @@ import {
 } from "lucide-react"
 
 function About() {
+ const handleScroll = (href) => {
+    // href should be like "#download", "#home", etc.
+    const section = document.querySelector(href);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // fallback: if section not found, try to jump (safe fallback)
+      window.location.hash = href;
+    }
+  };
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -25,13 +36,13 @@ function About() {
           <div className="text-center space-y-8">
             <Badge variant="secondary" className="w-fit mx-auto">
               <Heart className="h-4 w-4 mr-2" />
-              About ScrapBiz
+              About Green Roing
             </Badge>
             <h1 className="text-4xl lg:text-6xl font-bold text-foreground text-balance">
               Transforming Waste Into <span className="text-primary">Wealth</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed">
-              Since 2018, ScrapBiz has been at the forefront of sustainable recycling solutions, helping individuals and
+              Since 2018, Green Roing has been at the forefront of sustainable recycling solutions, helping individuals and
               businesses turn their scrap materials into valuable resources while protecting our planet.
             </p>
           </div>
@@ -121,12 +132,17 @@ function About() {
                 Ready to Join Our Mission?
               </h2>
               <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
-                Be part of the sustainable future. Start recycling with ScrapBiz today and make a positive impact on the
+                Be part of the sustainable future. Start recycling with Green Roing today and make a positive impact on the
                 environment while earning money.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+              <Button
+               onClick={(e) => {
+                  e.preventDefault();
+                  handleScroll("#contact");
+                }}
+              size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
                 Get Started Today
               </Button>
               <Button size="lg" variant="outline">
