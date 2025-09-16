@@ -1,30 +1,51 @@
-"use client"
+"use client";
 
-import { Link } from "react-router-dom"
-import { Button } from "@/components/ui/button"
-import { Leaf, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, Download } from "lucide-react"
+import React from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Download,
+} from "lucide-react";
 
 const Footer = () => {
+  const handleScroll = (href) => {
+    // href should be like "#download", "#home", etc.
+    const section = document.querySelector(href);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // fallback: if section not found, try to jump (safe fallback)
+      window.location.hash = href;
+    }
+  };
+
   const quickLinks = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Contact", href: "/contact" },
-  ]
+    { name: "Home", href: "#home" },
+    { name: "About Us", href: "#about" },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   const services = [
-    { name: "Metal Scrap Collection", href: "/portfolio" },
-    { name: "Plastic Waste Pickup", href: "/portfolio" },
-    { name: "Paper Recycling", href: "/portfolio" },
-    { name: "E-Waste Management", href: "/portfolio" },
-  ]
+    { name: "Metal Scrap Collection", href: "#portfolio" },
+    { name: "Plastic Waste Pickup", href: "#portfolio" },
+    { name: "Paper Recycling", href: "#portfolio" },
+    { name: "E-Waste Management", href: "#portfolio" },
+  ];
 
   const socialLinks = [
     { name: "Facebook", icon: Facebook, href: "#" },
     { name: "Twitter", icon: Twitter, href: "#" },
     { name: "Instagram", icon: Instagram, href: "#" },
     { name: "LinkedIn", icon: Linkedin, href: "#" },
-  ]
+  ];
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -33,24 +54,28 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                <Leaf className="h-6 w-6 text-white" />
+              <div className="w-15 h-15 rounded-full bg-white flex items-center justify-center overflow-hidden">
+                <img src="/grLogo.png" alt="Logo" className="w-10 h-10 object-contain" />
               </div>
               <span className="text-2xl font-bold">Green Roing</span>
             </Link>
+
             <p className="text-gray-300 text-sm leading-relaxed">
-              Leading scrap collection service committed to environmental sustainability. We turn your waste into wealth
-              while protecting our planet.
+              Leading scrap collection service committed to environmental sustainability. We turn your waste into
+              wealth while protecting our planet.
             </p>
+
             <div className="space-y-2">
               <div className="flex items-center space-x-2 text-sm">
                 <Phone className="h-4 w-4 text-primary" />
-                <span>+91 98765 43210</span>
+                <a href="tel:+919876543210" className="hover:text-primary">+91 98765 43210</a>
               </div>
+
               <div className="flex items-center space-x-2 text-sm">
                 <Mail className="h-4 w-4 text-primary" />
-                <span>info@scrapbiz.com</span>
+                <a href="mailto:info@greenroing.com" className="hover:text-primary">info@greenroing.com</a>
               </div>
+
               <div className="flex items-center space-x-2 text-sm">
                 <MapPin className="h-4 w-4 text-primary" />
                 <span>123 Scrap Street, Green City, Earth</span>
@@ -64,9 +89,16 @@ const Footer = () => {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link to={link.href} className="text-gray-300 hover:text-primary transition-colors text-sm">
+                  <a
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleScroll(link.href);
+                    }}
+                    className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  >
                     {link.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -78,9 +110,16 @@ const Footer = () => {
             <ul className="space-y-2">
               {services.map((service) => (
                 <li key={service.name}>
-                  <Link to={service.href} className="text-gray-300 hover:text-primary transition-colors text-sm">
+                  <a
+                    href={service.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleScroll(service.href);
+                    }}
+                    className="text-gray-300 hover:text-primary transition-colors text-sm"
+                  >
                     {service.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -89,16 +128,24 @@ const Footer = () => {
           {/* App Download & Social */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Stay Connected</h3>
+
             <div className="space-y-4">
-              <Button className="w-full">
-                <Download className="h-4 w-4 mr-2" />
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScroll("#download");
+                }}
+                className="w-full flex items-center justify-center gap-2"
+              >
+                <Download className="h-4 w-4" />
                 Download App
               </Button>
+
               <div>
                 <p className="text-sm text-gray-300 mb-3">Follow us on social media</p>
                 <div className="flex space-x-3">
                   {socialLinks.map((social) => {
-                    const Icon = social.icon
+                    const Icon = social.icon;
                     return (
                       <a
                         key={social.name}
@@ -108,7 +155,7 @@ const Footer = () => {
                       >
                         <Icon className="h-4 w-4" />
                       </a>
-                    )
+                    );
                   })}
                 </div>
               </div>
@@ -122,22 +169,16 @@ const Footer = () => {
             <p className="text-sm text-gray-400">
               © 2024 Green Roing. All rights reserved. | Turning waste into wealth sustainably.
             </p>
+
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
-                Cookie Policy
-              </a>
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors">Privacy Policy</a>
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors">Terms of Service</a>
             </div>
           </div>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

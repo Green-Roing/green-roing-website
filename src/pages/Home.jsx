@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Recycle, Truck, DollarSign, Star, Smartphone, Download, MessageCircle } from "lucide-react"
 import { Link } from "react-router-dom"
+import DownloadApp from "../components/DownloadApp"
 
 const Home = () => {
   const services = [
@@ -141,27 +142,7 @@ const Home = () => {
       </section>
 
       {/* App Download Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-green-600 to-green-700 text-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Smartphone className="h-16 w-16 mx-auto mb-6" />
-            <h2 className="text-4xl font-bold mb-4">Download Our App</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Get instant quotes, schedule pickups, and track your earnings with our mobile app
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="secondary" size="lg" className="text-lg px-8 py-6">
-                <Download className="mr-2 h-5 w-5" />
-                Download for Android
-              </Button>
-              <Button variant="secondary" size="lg" className="text-lg px-8 py-6">
-                <Download className="mr-2 h-5 w-5" />
-                Download for iOS
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+   <DownloadApp/>
 
       {/* Testimonials Section */}
       <section className="py-20 px-4 bg-gray-50">
@@ -210,7 +191,7 @@ const Home = () => {
       >
         <Button size="lg" className="rounded-full h-14 w-14 bg-green-500 hover:bg-green-600 shadow-lg" asChild>
           <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
-            <MessageCircle className="h-6 w-6" />
+            <MessageCircle className="h-10 w-10" />
           </a>
         </Button>
       </motion.div>
