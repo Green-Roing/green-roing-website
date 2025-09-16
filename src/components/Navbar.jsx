@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -13,11 +14,17 @@ const navigation = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleScroll = (href) => {
-    const section = document.querySelector(href);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+    if (location.pathname !== "/") {
+      // Go back to landing first
+      navigate("/", { state: { scrollTo: href } });
+    } else {
+      // Already on landing page → just scroll
+      const section = document.querySelector(href);
+      if (section) section.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -26,10 +33,10 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-             <div className="w-20 h-20 rounded-full flex items-center justify-center overflow-hidden">
-                <img src="/grLogo.png" alt="Logo" className="w-15 h-15 object-contain" />
-              </div>
-         
+          <div className="w-20 h-20 rounded-full flex items-center justify-center overflow-hidden">
+            <img src="/grLogo.png" alt="Logo" className="w-15 h-15 object-contain" />
+          </div>
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (

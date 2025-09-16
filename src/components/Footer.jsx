@@ -55,25 +55,37 @@ const Footer = () => {
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
               <div className="w-15 h-15 rounded-full bg-white flex items-center justify-center overflow-hidden">
-                <img src="/grLogo.png" alt="Logo" className="w-10 h-10 object-contain" />
+                <img
+                  src="/grLogo.png"
+                  alt="Logo"
+                  className="w-10 h-10 object-contain"
+                />
               </div>
               <span className="text-2xl font-bold">Green Roing</span>
             </Link>
 
             <p className="text-gray-300 text-sm leading-relaxed">
-              Leading scrap collection service committed to environmental sustainability. We turn your waste into
-              wealth while protecting our planet.
+              Leading scrap collection service committed to environmental
+              sustainability. We turn your waste into wealth while protecting
+              our planet.
             </p>
 
             <div className="space-y-2">
               <div className="flex items-center space-x-2 text-sm">
                 <Phone className="h-4 w-4 text-primary" />
-                <a href="tel:+919876543210" className="hover:text-primary">+91 98765 43210</a>
+                <a href="tel:+919876543210" className="hover:text-primary">
+                  +91 98765 43210
+                </a>
               </div>
 
               <div className="flex items-center space-x-2 text-sm">
                 <Mail className="h-4 w-4 text-primary" />
-                <a href="mailto:info@greenroing.com" className="hover:text-primary">info@greenroing.com</a>
+                <a
+                  href="mailto:info@greenroing.com"
+                  className="hover:text-primary"
+                >
+                  info@greenroing.com
+                </a>
               </div>
 
               <div className="flex items-center space-x-2 text-sm">
@@ -142,7 +154,9 @@ const Footer = () => {
               </Button>
 
               <div>
-                <p className="text-sm text-gray-300 mb-3">Follow us on social media</p>
+                <p className="text-sm text-gray-300 mb-3">
+                  Follow us on social media
+                </p>
                 <div className="flex space-x-3">
                   {socialLinks.map((social) => {
                     const Icon = social.icon;
@@ -167,12 +181,24 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-400">
-              © 2024 Green Roing. All rights reserved. | Turning waste into wealth sustainably.
+              © 2024 Green Roing. All rights reserved. | Turning waste into
+              wealth sustainably.
             </p>
 
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors">Terms of Service</a>
+              {/* React Router navigation for real pages */}
+              <Link
+                to="/privacy-policy"
+                className="text-gray-400 hover:text-primary transition-colors"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                to="/terms-of-service"
+                className="text-gray-400 hover:text-primary transition-colors"
+              >
+                Terms of Service
+              </Link>
             </div>
           </div>
         </div>
