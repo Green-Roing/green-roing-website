@@ -1,0 +1,194 @@
+"use client"
+
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Recycle, Truck, DollarSign, Star, Smartphone, Download, MessageCircle } from "lucide-react"
+import { Link } from "react-router-dom"
+
+const Home = () => {
+  const services = [
+    {
+      icon: <Truck className="h-12 w-12 text-primary" />,
+      title: "Scrap Collection",
+      description:
+        "We collect all types of scrap materials from your doorstep with our professional team and modern vehicles.",
+    },
+    {
+      icon: <Recycle className="h-12 w-12 text-primary" />,
+      title: "Recycling",
+      description:
+        "Advanced recycling processes that transform your scrap into valuable resources while protecting the environment.",
+    },
+    {
+      icon: <DollarSign className="h-12 w-12 text-primary" />,
+      title: "Selling",
+      description: "Get the best market rates for your scrap materials with transparent pricing and instant payments.",
+    },
+  ]
+
+  const testimonials = [
+    {
+      name: "Rajesh Kumar",
+      rating: 5,
+      comment:
+        "Green Roing provided excellent service! They collected all my old electronics and gave me a fair price. Highly recommended!",
+    },
+    {
+      name: "Priya Sharma",
+      rating: 5,
+      comment:
+        "Very professional team. They arrived on time and handled everything efficiently. Great experience with Green Roing!",
+    },
+    {
+      name: "Amit Patel",
+      rating: 5,
+      comment:
+        "Best scrap collection service in the city. Fair pricing and eco-friendly approach. Will definitely use again!",
+    },
+  ]
+
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-green-50 to-green-100 py-20 px-4">
+        <div className="max-w-7xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+              <span className="text-primary">Green Roing</span>
+            </h1>
+            <p className="text-2xl md:text-3xl text-gray-700 mb-8 font-medium">Turn Your Scrap Into Cash</p>
+            <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+              Professional scrap collection and recycling services. We help you convert your waste materials into
+              valuable resources while contributing to a cleaner environment.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="text-lg px-8 py-6">
+                <Link to="/contact">Contact Us</Link>
+              </Button>
+              <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-transparent">
+                Learn More
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Comprehensive scrap management solutions for individuals and businesses
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <Card className="h-full text-center hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="flex justify-center mb-4">{service.icon}</div>
+                    <CardTitle className="text-xl">{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-base">{service.description}</CardDescription>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* App Download Section */}
+      <section className="py-20 px-4 bg-gradient-to-r from-green-600 to-green-700 text-white">
+        <div className="max-w-7xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <Smartphone className="h-16 w-16 mx-auto mb-6" />
+            <h2 className="text-4xl font-bold mb-4">Download Our App</h2>
+            <p className="text-xl mb-8 max-w-2xl mx-auto">
+              Get instant quotes, schedule pickups, and track your earnings with our mobile app
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="secondary" size="lg" className="text-lg px-8 py-6">
+                <Download className="mr-2 h-5 w-5" />
+                Download for Android
+              </Button>
+              <Button variant="secondary" size="lg" className="text-lg px-8 py-6">
+                <Download className="mr-2 h-5 w-5" />
+                Download for iOS
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+            <p className="text-lg text-gray-600">Trusted by thousands of satisfied customers</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card className="h-full">
+                  <CardContent className="pt-6">
+                    <div className="flex mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                      ))}
+                    </div>
+                    <p className="text-gray-600 mb-4">"{testimonial.comment}"</p>
+                    <p className="font-semibold text-gray-900">- {testimonial.name}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Floating WhatsApp Button */}
+      <motion.div
+        className="fixed bottom-6 right-6 z-50"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: 1, type: "spring", stiffness: 260, damping: 20 }}
+      >
+        <Button size="lg" className="rounded-full h-14 w-14 bg-green-500 hover:bg-green-600 shadow-lg" asChild>
+          <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+            <MessageCircle className="h-6 w-6" />
+          </a>
+        </Button>
+      </motion.div>
+    </div>
+  )
+}
+
+export default Home
