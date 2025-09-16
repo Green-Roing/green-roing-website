@@ -10,10 +10,10 @@ const Navbar = () => {
   const location = useLocation()
 
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Contact", href: "/contact" },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "Contact", href: "#contact" },
   ]
 
   const isActive = (path) => location.pathname === path
@@ -33,15 +33,17 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <Link
+              <a
                 key={item.name}
-                to={item.href}
-                className={`px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700 hover:text-primary"
-                }`}
+                href={item.href}
+                className="px-3 py-2 text-sm font-medium transition-colors text-gray-700 hover:text-primary"
+                onClick={(e) => {
+                  e.preventDefault()
+                  document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' })
+                }}
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
             <Button size="sm" className="ml-4">
               <Download className="h-4 w-4 mr-2" />
@@ -65,18 +67,18 @@ const Navbar = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
               {navigation.map((item) => (
-                <Link
+                <a
                   key={item.name}
-                  to={item.href}
-                  className={`block px-3 py-2 text-base font-medium transition-colors ${
-                    isActive(item.href)
-                      ? "text-primary bg-primary/10"
-                      : "text-gray-700 hover:text-primary hover:bg-gray-50"
-                  }`}
-                  onClick={() => setIsOpen(false)}
+                  href={item.href}
+                  className="block px-3 py-2 text-base font-medium transition-colors text-gray-700 hover:text-primary hover:bg-gray-50"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setIsOpen(false)
+                    document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' })
+                  }}
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
               <div className="px-3 py-2">
                 <Button size="sm" className="w-full">

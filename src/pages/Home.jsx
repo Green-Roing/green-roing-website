@@ -49,30 +49,57 @@ const Home = () => {
   ]
 
   return (
-    <div className="min-h-screen">
+    <div id="home" className="min-h-screen">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-green-50 to-green-100 py-20 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
-              <span className="text-primary">Green Roing</span>
-            </h1>
-            <p className="text-2xl md:text-3xl text-gray-700 mb-8 font-medium">Turn Your Scrap Into Cash</p>
-            <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
-              Professional scrap collection and recycling services. We help you convert your waste materials into
-              valuable resources while contributing to a cleaner environment.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="text-lg px-8 py-6">
-                <Link to="/contact">Contact Us</Link>
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-transparent">
-                Learn More
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
+        
+        {/* Left Side Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center md:text-left"
+        >
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+            <span className="text-primary">Green Roing</span>
+          </h1>
+          <p className="text-2xl md:text-3xl text-gray-700 mb-8 font-medium">
+            Turn Your Scrap Into Cash
+          </p>
+          <p className="text-lg text-gray-600 mb-10 max-w-2xl">
+            Professional scrap collection and recycling services. We help you convert your waste materials into
+            valuable resources while contributing to a cleaner environment.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 md:justify-start justify-center">
+            <Button asChild size="lg" className="text-lg px-8 py-6">
+              <Link to="#contact">Contact Us</Link>
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="text-lg px-8 py-6 bg-transparent"
+            >
+              Learn More
+            </Button>
+          </div>
+        </motion.div>
+
+        {/* Right Side Image */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex justify-center md:justify-end"
+        >
+          <img
+            src="/homeImage.jpg"
+            alt="Green Roing Hero"
+            className="w-full max-w-md md:max-w-lg rounded-xl shadow-lg object-cover"
+          />
+        </motion.div>
+      </div>
+    </section>
 
       {/* Services Section */}
       <section className="py-20 px-4 bg-white">

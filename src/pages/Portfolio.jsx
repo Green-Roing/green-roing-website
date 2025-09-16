@@ -70,7 +70,7 @@ function Portfolio() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-20 lg:py-32">
+      <section id="portfolio" className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-8">
             <Badge variant="secondary" className="w-fit mx-auto">
