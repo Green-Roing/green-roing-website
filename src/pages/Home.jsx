@@ -22,8 +22,7 @@ import { Link } from "react-router-dom";
 import DownloadApp from "../components/DownloadApp";
 
 const Home = () => {
-
-   const handleScroll = (href) => {
+  const handleScroll = (href) => {
     // href should be like "#download", "#home", etc.
     const section = document.querySelector(href);
     if (section) {
@@ -78,7 +77,7 @@ const Home = () => {
   return (
     <div id="home" className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-green-100 py-20 px-4">
+      <section className="relative bg-green-100 py-10 px-4">
         <div className="max-w-7xl min-h-screen mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
           {/* Left Side Content */}
           <motion.div
@@ -100,11 +99,14 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 md:justify-start justify-center">
               <Button
-               onClick={(e) => {
+                onClick={(e) => {
                   e.preventDefault();
                   handleScroll("#contact");
                 }}
-              asChild size="lg" className="text-lg px-8 py-6">
+                asChild
+                size="lg"
+                className="text-lg px-8 py-6"
+              >
                 <Link to="#contact">Contact Us</Link>
               </Button>
               <Button
@@ -112,7 +114,7 @@ const Home = () => {
                 size="lg"
                 className="text-lg px-8 py-6 bg-transparent"
               >
-                Learn More
+               <a href="https://aigreenfoundation.com/" target="_blank">Learn More</a> 
               </Button>
             </div>
           </motion.div>
@@ -239,8 +241,7 @@ const Home = () => {
         transition={{ delay: 1, type: "spring", stiffness: 260, damping: 20 }}
       >
         <Button
-          size="lg"
-          className="rounded-full h-14 w-14 bg-green-500 hover:bg-green-600 shadow-lg"
+          className="rounded-full h-14 w-14 bg-green-500 hover:bg-green-600 shadow-lg flex items-center justify-center"
           asChild
         >
           <a

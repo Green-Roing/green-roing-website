@@ -97,13 +97,14 @@ function Portfolio() {
               <div className="text-sm text-muted-foreground">Projects Completed</div>
             </div>
             <div className="text-center">
+              <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">₹2000+</div>
+              <div className="text-sm text-muted-foreground">Tons Collected</div>
+            </div>
+            <div className="text-center">
               <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">800+</div>
               <div className="text-sm text-muted-foreground">Tons Recycled</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">₹2.5Cr+</div>
-              <div className="text-sm text-muted-foreground">Value Generated</div>
-            </div>
+            
             <div className="text-center">
               <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">15+</div>
               <div className="text-sm text-muted-foreground">Cities Served</div>
@@ -113,7 +114,7 @@ function Portfolio() {
       </section>
 
       {/* Portfolio Grid */}
-      <section className="py-20 bg-background">
+      {/* <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
             <Badge variant="secondary" className="w-fit mx-auto">
@@ -124,8 +125,7 @@ function Portfolio() {
             </h2>
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => (
               <Card
                 key={project.id}
@@ -160,8 +160,7 @@ function Portfolio() {
                 </CardHeader>
 
                 <CardContent className="space-y-4">
-                  {/* Project Stats */}
-                  <div className="grid grid-cols-3 gap-2 text-center">
+                   <div className="grid grid-cols-3 gap-2 text-center">
                     <div className="bg-muted/50 rounded-lg p-2">
                       <div className="text-sm font-semibold text-primary">{project.stats.scrapCollected}</div>
                       <div className="text-xs text-muted-foreground">Collected</div>
@@ -176,8 +175,7 @@ function Portfolio() {
                     </div>
                   </div>
 
-                  {/* Key Highlights */}
-                  <div className="space-y-2">
+                    <div className="space-y-2">
                     <div className="text-sm font-medium">Key Highlights:</div>
                     <div className="space-y-1">
                       {project.highlights.slice(0, 2).map((highlight, index) => (
@@ -198,7 +196,7 @@ function Portfolio() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
