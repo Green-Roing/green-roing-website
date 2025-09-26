@@ -9,6 +9,7 @@
     "start": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@emotion/is-prop-valid": "latest",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "1.2.2",
@@ -53,8 +54,6 @@
     "less": "latest",
     "lightningcss": "latest",
     "lucide-react": "^0.454.0",
-
-
     "path": "latest",
     "react": "^18.3.1",
     "react-day-picker": "9.8.0",

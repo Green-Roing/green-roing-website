@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,50 +9,87 @@ import {
   MapPin,
   Phone,
   Mail,
-  Clock,
   MessageCircle,
   Send,
   CheckCircle,
+  XCircle,
 } from "lucide-react";
 import MapCard from "../components/MapCard";
+import emailjs from "@emailjs/browser";
+import { emailKeys } from "../constants/keys";
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    contact: "",
-    title: "",
-    message: "",
-  });
-
+  const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [status, setStatus] = useState(null); // "success" | "error" | null
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const validateForm = (form) => {
+    const name = form.user_name.value.trim();
+    const phone = form.user_phone.value.trim();
+    const email = form.user_email.value.trim();
+    const message = form.message.value.trim();
+
+    // Regex patterns
+    const nameRegex = /^[a-zA-Z\s]{3,50}$/; // only letters & spaces, 3–50 chars
+    const phoneRegex = /^[0-9]{10}$/; // 10 digits only
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // simple email format
+
+    if (!nameRegex.test(name)) {
+      window.alert(
+        "Please enter a valid full name (only letters, min 3 chars)."
+      );
+      return false;
+    }
+
+    if (!phoneRegex.test(phone)) {
+      window.alert("Please enter a valid 10-digit phone number.");
+      return false;
+    }
+
+    if (!emailRegex.test(email)) {
+      window.alert("Please enter a valid email address.");
+      return false;
+    }
+
+    if (message.length < 5) {
+      window.alert("Message must be at least 5 characters long.");
+      return false;
+    }
+    if (message.length > 500) {
+      window.alert("Message must be less than 500 characters long.");
+      return false;
+    }
+
+    return true;
   };
 
-  const handleSubmit = async (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
+
+    if (!validateForm(form.current)) return;
+
     setIsSubmitting(true);
+    setStatus(null);
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      await emailjs.sendForm(
+        emailKeys.serviceId,
+        emailKeys.templateId,
+        form.current,
+        { publicKey: emailKeys.publicKey }
+      );
+      setStatus("success");
+      form.current.reset();
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      setTimeout(() => setStatus(null), 2000);
+    } catch (error) {
+      console.error("Failed to send: ", error.text);
+      setStatus("error");
 
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        contact: "",
-        title: "",
-        message: "",
-      });
-    }, 3000);
+      setTimeout(() => setStatus(null), 2000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -80,7 +117,7 @@ function Contact() {
           {/* Form */}
           <Card className="border-border shadow-lg">
             <CardContent className="p-8">
-              {isSubmitted ? (
+              {status === "success" ? (
                 <div className="text-center py-10 space-y-4">
                   <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
                     <CheckCircle className="h-8 w-8 text-green-600" />
@@ -92,57 +129,60 @@ function Contact() {
                     Our team will get back to you shortly.
                   </p>
                 </div>
+              ) : status === "error" ? (
+                <div className="text-center py-10 space-y-4">
+                  <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
+                    <XCircle className="h-8 w-8 text-red-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground">
+                    Failed to Send Message
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Please try again later or contact us directly.
+                  </p>
+                </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form ref={form} onSubmit={sendEmail} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name *</Label>
                       <Input
                         id="name"
-                        name="name"
+                        name="user_name"
                         type="text"
                         placeholder="Enter your name"
-                        value={formData.name}
-                        onChange={handleInputChange}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="contact">Contact No *</Label>
+                      <Label htmlFor="user_phone">Contact No *</Label>
                       <Input
-                        id="contact"
-                        name="contact"
+                        id="user_phone"
+                        name="user_phone"
                         type="text"
                         placeholder="Enter your phone number"
-                        value={formData.contact}
-                        onChange={handleInputChange}
                         required
                       />
                     </div>
                   </div>
-
                   <div className="space-y-2">
-                    <Label htmlFor="title">Title *</Label>
+                    <Label htmlFor="title">Email *</Label>
                     <Input
-                      id="title"
-                      name="title"
-                      type="text"
-                      placeholder="Message title"
-                      value={formData.title}
-                      onChange={handleInputChange}
+                      id="email"
+                      name="user_email"
+                      type="email"
+                      placeholder="Enter your email"
                       required
                     />
                   </div>
-
                   <div className="space-y-2">
                     <Label htmlFor="message">Message *</Label>
                     <Textarea
                       id="message"
                       name="message"
                       rows={5}
+                      className="lg:min-h-[220px]"
                       placeholder="Write your message here..."
-                      value={formData.message}
-                      onChange={handleInputChange}
                       required
                     />
                   </div>
@@ -170,7 +210,7 @@ function Contact() {
             </CardContent>
           </Card>
 
-          {/* Contact Cards */}
+          {/* Contact Info */}
           <div className="grid grid-cols-1 gap-6">
             <Card className="border-border hover:shadow-md transition-shadow duration-300">
               <CardContent className="p-6">
@@ -180,28 +220,26 @@ function Contact() {
                   </div>
                   <div className="space-y-2">
                     <h3 className="font-semibold text-foreground">Address</h3>
-                    <div className="space-y-1">
+                    <p className="text-sm text-muted-foreground">
+                      123 Scrap Street, Green City, Mumbai, India
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <Mail className="h-5 w-5 text-primary" />
                       <p className="text-sm text-muted-foreground">
-                        123 Scrap Street", "Green City, Mumbai, India123 Scrap
-                        Street", "Green City, Mumbai, India
+                        thealoksinghh@gmail.com
                       </p>
                     </div>
-                    <div className=" flex flex-row items-center gap-2">
-                      <Mail className="h-6 w-6 text-primary" />
+                    <div className="flex items-center gap-2">
+                      <Phone className="h-5 w-5 text-primary" />
                       <p className="text-sm text-muted-foreground">
-                        Email :thealoksinghh@gmail.com{" "}
-                      </p>
-                    </div>
-                    <div className=" flex flex-row items-center gap-2">
-                      <Phone className="h-6 w-6 text-primary" />
-                      <p className="text-sm text-muted-foreground">
-                        Phone :+91 9708571269{" "}
+                        +91 9708571269
                       </p>
                     </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
+
             <MapCard
               title="Head Office"
               coordinates={{ lat: 19.076, lng: 72.8777 }}
