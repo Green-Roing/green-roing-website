@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
@@ -46,14 +47,26 @@ function Landing({}) {
       <Portfolio/>
       <Contact/>
       {/* WhatsApp Button */}
-      <div className="fixed bottom-6 right-6 z-40">
+      {/* Floating WhatsApp Button */}
+      <motion.div
+        className="fixed bottom-12 right-6 z-50"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: 1, type: "spring", stiffness: 260, damping: 20 }}
+      >
         <Button
-          size="lg"
-          className="rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 w-14 h-14 p-0"
+          className="rounded-full h-14 w-14 bg-green-500 hover:bg-green-600 shadow-lg flex items-center justify-center"
+          asChild
         >
-          <MessageCircle className="h-6 w-6" />
+          <a
+            href="https://wa.me/919876543210"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <MessageCircle className="h-10 w-10" />
+          </a>
         </Button>
-      </div>
+      </motion.div>
     </div>
   )
 }

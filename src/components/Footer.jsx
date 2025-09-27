@@ -41,10 +41,18 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: "Facebook", icon: Facebook, href: "#" },
-    { name: "Twitter", icon: Twitter, href: "#" },
-    { name: "Instagram", icon: Instagram, href: "#" },
-    { name: "LinkedIn", icon: Linkedin, href: "#" },
+    {
+      name: "Facebook",
+      icon: Facebook,
+      href: "https://www.facebook.com/people/Ai-Green-Foundation/61565108856666/?mibextid=rS40aB7S9Ucbxw6v",
+    },
+    // { name: "Twitter", icon: Twitter, href: "#" },
+    {
+      name: "Instagram",
+      icon: Instagram,
+      href: "https://www.instagram.com/ai_greenfoundation/?igsh=aDZ4aWczM2tsejk3#",
+    },
+    // { name: "LinkedIn", icon: Linkedin, href: "#" },
   ];
 
   return (
@@ -73,8 +81,8 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center space-x-2 text-sm">
                 <Phone className="h-4 w-4 text-primary" />
-                <a href="tel:+919876543210" className="hover:text-primary">
-                  +91 98765 43210
+                <a href="tel:+917005628093" className="hover:text-primary">
+                  +91 7005628093
                 </a>
               </div>
 
@@ -84,13 +92,17 @@ const Footer = () => {
                   href="mailto:info@greenroing.com"
                   className="hover:text-primary"
                 >
-                  info@greenroing.com
+                  roinggreen@gmail.com
                 </a>
               </div>
 
-              <div className="flex items-center space-x-2 text-sm">
-                <MapPin className="h-4 w-4 text-primary" />
-                <span>123 Scrap Street, Green City, Earth</span>
+              <div className="flex items-start space-x-2 text-sm">
+                <MapPin className="h-4 w-4 text-primary flex-shrink-0" />
+                <span>
+                  Reg. Office: C/O IBI Mepo, Ring Electrical Sub Division Lower
+                  Market, Roing, Lower Dibang Valley District-792110, Arunachal
+                  Pradesh, India
+                </span>
               </div>
             </div>
           </div>
@@ -164,6 +176,8 @@ const Footer = () => {
                       <a
                         key={social.name}
                         href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
                         aria-label={social.name}
                       >

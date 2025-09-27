@@ -234,26 +234,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Floating WhatsApp Button */}
-      <motion.div
-        className="fixed bottom-6 right-6 z-50"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 1, type: "spring", stiffness: 260, damping: 20 }}
-      >
-        <Button
-          className="rounded-full h-14 w-14 bg-green-500 hover:bg-green-600 shadow-lg flex items-center justify-center"
-          asChild
-        >
-          <a
-            href="https://wa.me/919876543210"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MessageCircle className="h-10 w-10" />
-          </a>
-        </Button>
-      </motion.div>
+     
     </div>
   );
 };

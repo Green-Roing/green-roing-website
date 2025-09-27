@@ -221,18 +221,20 @@ function Contact() {
                   <div className="space-y-2">
                     <h3 className="font-semibold text-foreground">Address</h3>
                     <p className="text-sm text-muted-foreground">
-                      123 Scrap Street, Green City, Mumbai, India
+                      Reg. Office: C/O IBI Mepo, Ring Electrical Sub Division Lower
+                  Market, Roing, Lower Dibang Valley District-792110, Arunachal
+                  Pradesh, India
                     </p>
                     <div className="flex items-center gap-2">
                       <Mail className="h-5 w-5 text-primary" />
                       <p className="text-sm text-muted-foreground">
-                        thealoksinghh@gmail.com
+                        roinggreen@gmail.com
                       </p>
                     </div>
                     <div className="flex items-center gap-2">
                       <Phone className="h-5 w-5 text-primary" />
                       <p className="text-sm text-muted-foreground">
-                        +91 9708571269
+                        +91 7005628093
                       </p>
                     </div>
                   </div>
