@@ -93,7 +93,8 @@ const Home = () => {
               Turn Your Scrap Into Cash
             </p>
             <p className="text-lg text-gray-600 mb-10 max-w-2xl">
-              Professional scrap collection and recycling services. We help you
+              Professional scrap collection and recycling services.
+              We help you
               convert your waste materials into valuable resources while
               contributing to a cleaner environment.
             </p>
