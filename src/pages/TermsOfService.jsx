@@ -127,11 +127,11 @@ function TermsOfService() {
               <p className="text-muted-foreground">
                 For questions about these Terms of Service, contact us at:
                 <br />
-                Email: legal@greenroing.com
+                Email: roinggreen@gmail.com
                 <br />
-                Phone: +91 98765 43210
+                Phone: +91 8414841234
                 <br />
-                Address: 123 Scrap Street, Green City, Mumbai 400001
+                Address: C/O Ibi Mepo, Roing Electrical Sub Division Lower Market, Roing, Lower Dibang Valley District-792110, Arunachal Pradesh, India
               </p>
             </CardContent>
           </Card>

@@ -97,9 +97,11 @@ function PrivacyPolicy() {
               <p className="text-muted-foreground">
                 If you have any questions about this Privacy Policy, please contact us at:
                 <br />
-                Email: privacy@greenroing.com
+                Email: roinggreen@gmail.com
                 <br />
-                Phone: +91 98765 43210
+                Phone: +91 8414841234
+                <br />
+                Address: C/O Ibi Mepo, Roing Electrical Sub Division Lower Market, Roing, Lower Dibang Valley District-792110, Arunachal Pradesh, India
               </p>
             </CardContent>
           </Card>
