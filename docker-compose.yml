@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  green-roing-web:
+    image: thealoksingh/green-roing-web:latest
+    ports:
+      - "3050:3050"
+    restart: unless-stopped
+    container_name: green-roing-web

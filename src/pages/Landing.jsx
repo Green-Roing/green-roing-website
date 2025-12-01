@@ -59,7 +59,7 @@ function Landing({}) {
           asChild
         >
           <a
-            href="https://wa.me/919876543210"
+            href="https://wa.me/918414841234"
             target="_blank"
             rel="noopener noreferrer"
           >

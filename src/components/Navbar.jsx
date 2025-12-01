@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,8 +14,31 @@ const navigation = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("#home");
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["#home", "#about", "#portfolio", "#contact", "#download"];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.querySelector(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
 
   const handleScroll = (href) => {
     if (location.pathname !== "/") {
@@ -33,8 +56,17 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="w-20 h-20 rounded-full flex items-center justify-center overflow-hidden">
-            <img src="/grLogo.png" alt="Logo" className="w-15 h-15 object-contain" />
+          <div className="flex flex items-center justify-center">
+            <div className="w-20 h-20 rounded-full flex items-center justify-center overflow-hidden">
+              <img
+                src="/grLogo.png"
+                alt="Logo"
+                className="w-15 h-15 object-contain"
+              />
+            </div>
+            {/* <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+              <span className="text-primary">Green Roing</span>
+            </h1> */}
           </div>
 
           {/* Desktop Navigation */}
@@ -43,7 +75,11 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="px-3 py-2 text-sm font-medium transition-colors text-gray-700 hover:text-primary"
+                className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  activeSection === item.href
+                    ? "text-primary border-b-2 border-primary"
+                    : "text-gray-700 hover:text-primary"
+                }`}
                 onClick={(e) => {
                   e.preventDefault();
                   handleScroll(item.href);
@@ -73,7 +109,11 @@ export default function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -92,7 +132,11 @@ export default function Navbar() {
                   setIsOpen(false);
                   handleScroll(item.href);
                 }}
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50"
+                className={`block px-3 py-2 text-base font-medium transition-colors ${
+                  activeSection === item.href
+                    ? "text-primary bg-green-50 border-l-4 border-primary"
+                    : "text-gray-700 hover:text-primary hover:bg-gray-50"
+                }`}
               >
                 {item.name}
               </a>
