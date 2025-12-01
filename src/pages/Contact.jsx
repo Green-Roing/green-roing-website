@@ -95,7 +95,7 @@ function Contact() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-20 lg:py-28">
+      <section id="contact" className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-20 lg:py-28">
         <div className="max-w-5xl mx-auto px-4 text-center space-y-6">
           <Badge variant="secondary" className="w-fit mx-auto">
             <MessageCircle className="h-4 w-4 mr-2" />
@@ -221,9 +221,9 @@ function Contact() {
                   <div className="space-y-2">
                     <h3 className="font-semibold text-foreground">Address</h3>
                     <p className="text-sm text-muted-foreground">
-                      Reg. Office: C/O IBI Mepo, Ring Electrical Sub Division Lower
-                  Market, Roing, Lower Dibang Valley District-792110, Arunachal
-                  Pradesh, India
+                      Reg. Office: C/O Ibi Mepo, Roing Electrical Sub Division Lower
+                      Market, Roing, Lower Dibang Valley District-792110, Arunachal
+                      Pradesh, India
                     </p>
                     <div className="flex items-center gap-2">
                       <Mail className="h-5 w-5 text-primary" />
@@ -234,7 +234,7 @@ function Contact() {
                     <div className="flex items-center gap-2">
                       <Phone className="h-5 w-5 text-primary" />
                       <p className="text-sm text-muted-foreground">
-                        +91 7005628093
+                        +91 8414841234
                       </p>
                     </div>
                   </div>

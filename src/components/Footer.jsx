@@ -81,8 +81,8 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center space-x-2 text-sm">
                 <Phone className="h-4 w-4 text-primary" />
-                <a href="tel:+917005628093" className="hover:text-primary">
-                  +91 7005628093
+                <a href="tel:+918414841234" className="hover:text-primary">
+                  +91 8414841234
                 </a>
               </div>
 
@@ -99,7 +99,7 @@ const Footer = () => {
               <div className="flex items-start space-x-2 text-sm">
                 <MapPin className="h-4 w-4 text-primary flex-shrink-0" />
                 <span>
-                  Reg. Office: C/O IBI Mepo, Ring Electrical Sub Division Lower
+                  Reg. Office: C/O Ibi Mepo, Roing Electrical Sub Division Lower
                   Market, Roing, Lower Dibang Valley District-792110, Arunachal
                   Pradesh, India
                 </span>

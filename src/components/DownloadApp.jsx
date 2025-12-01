@@ -1,16 +1,44 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Recycle, Truck, DollarSign, Star, Smartphone, Download, MessageCircle } from "lucide-react"
-import { Link } from "react-router-dom"
+import { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Recycle,
+  Truck,
+  DollarSign,
+  Star,
+  Smartphone,
+  Download,
+  MessageCircle,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
 const DownloadApp = () => {
+  const [loading, setLoading] = useState(false);
+  const downloadRef = useRef(null);
 
+  const handleAndroidDownload = () => {
+    setLoading(true);
 
-    return(
-         <section id="download" className="py-20 px-4 bg-gradient-to-r from-green-600 to-green-700 text-white">
+    setTimeout(() => {
+      downloadRef.current.click();
+      setLoading(false);
+    }, 600); // Show loader briefly before triggering download
+  };
+
+  return (
+    <section
+      id="download"
+      className="py-20 px-4 bg-gradient-to-r from-green-600 to-green-700 text-white"
+    >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
         
         {/* Left: Content */}
@@ -23,13 +51,41 @@ const DownloadApp = () => {
           <Smartphone className="h-16 w-16 mx-auto md:mx-0 mb-6" />
           <h2 className="text-4xl font-bold mb-4">Download Our App</h2>
           <p className="text-xl mb-8 max-w-2xl">
-            Get instant quotes, schedule pickups, and track your earnings with our mobile app
+            Get instant quotes, schedule pickups, and track your earnings with
+            our mobile app
           </p>
+
           <div className="flex flex-col sm:flex-row gap-4 md:justify-start justify-center">
-            <Button variant="secondary" size="lg" className="text-lg px-8 py-6">
-              <Download className="mr-2 h-5 w-5" />
-              Download for Android
+
+            <a
+              ref={downloadRef}
+              href="https://github.com/GreenRoing/gr-app/releases/download/v0.0.9/GreenRoing.apk"
+              download
+              className="hidden"
+            ></a>
+
+            {/* Android Button With Loader */}
+            <Button
+              variant="secondary"
+              size="lg"
+              className="text-lg px-8 py-6 flex items-center"
+              onClick={handleAndroidDownload}
+              disabled={loading}
+            >
+              {loading ? (
+                <>
+                  <div className="animate-spin rounded-full h-5 w-5 border-2 border-t-transparent border-white mr-2"></div>
+                  Downloading...
+                </>
+              ) : (
+                <>
+                  <Download className="mr-2 h-5 w-5" />
+                  Download for Android
+                </>
+              )}
             </Button>
+
+            {/* iOS Button (inactive placeholder) */}
             <Button variant="secondary" size="lg" className="text-lg px-8 py-6">
               <Download className="mr-2 h-5 w-5" />
               Download for iOS
@@ -52,6 +108,7 @@ const DownloadApp = () => {
         </motion.div>
       </div>
     </section>
-    )
-}
-export default DownloadApp
+  );
+};
+
+export default DownloadApp;
