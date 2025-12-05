@@ -32,11 +32,10 @@ const DownloadApp = () => {
 
   const handleAndroidDownload = () => {
     setLoading(true);
-
     setTimeout(() => {
-      downloadRef.current.click();
+      window.open('https://play.google.com/store/apps/details?id=com.greenroing&hl=en', '_blank');
       setLoading(false);
-    }, 600); // Show loader briefly before triggering download
+    }, 600);
   };
 
   return (
@@ -54,32 +53,13 @@ const DownloadApp = () => {
           className="text-center md:text-left"
         >
           <Smartphone className="h-16 w-16 mx-auto md:mx-0 mb-6" />
-          <h2 className="text-4xl font-bold mb-4">Download Our Beta App</h2>
+          <h2 className="text-4xl font-bold mb-4">Download Our App</h2>
           
-          {/* Beta Promotion */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-8 border border-white/20">
-            <h3 className="text-xl font-semibold mb-4 text-yellow-200">Join Our Beta Program</h3>
-            <div className="space-y-3 text-sm leading-relaxed">
-              <p>You're about to download the beta version of our GreenRoing mobile application.</p>
-              <p>This app is currently under official production review and not yet published on the Google Play Store or Apple App Store.</p>
-              <p>Because this APK is shared directly, your device or browser may show warnings like <span className="font-semibold text-yellow-200">"This file may be harmful"</span> — but don't worry! This is a common message for all apps installed outside the Play Store.</p>
-              <p>We assure you that the file is <span className="font-semibold">safe, secure, and provided directly by our development team.</span></p>
-              <p>By installing this beta version, you help us improve the platform. We truly appreciate your support, trust, and valuable feedback as we shape the future of GreenRoing.</p>
-            </div>
-          </div>
-          
-          <p className="text-lg mb-8 max-w-xl">
+          <p className="text-xl mb-8 max-w-2xl">
             Experience our waste management platform - schedule pickups, connect with recyclers, and contribute to a sustainable future
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 md:justify-start justify-center">
-
-            <a
-              ref={downloadRef}
-              href="https://github.com/GreenRoing/gr-app/releases/download/v0.0.9/GreenRoing.apk"
-              download
-              className="hidden"
-            ></a>
 
             {/* Android Button With Loader */}
             <Button
@@ -92,7 +72,7 @@ const DownloadApp = () => {
               {loading ? (
                 <>
                   <div className="animate-spin rounded-full h-5 w-5 border-2 border-t-transparent border-white mr-2"></div>
-                  Downloading...
+                  Opening Play Store...
                 </>
               ) : (
                 <>
@@ -123,7 +103,7 @@ const DownloadApp = () => {
           className="flex justify-center md:justify-end"
         >
           <img
-            src="/appImage.jpg"
+            src="/appImage.png"
             alt="App Preview"
             className="w-full max-w-sm md:max-w-md rounded-xl shadow-lg object-cover"
           />
