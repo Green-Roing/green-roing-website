@@ -144,9 +144,10 @@ function Contact() {
               ) : (
                 <form ref={form} onSubmit={sendEmail} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
+                    <div className="space-y-2 ">
                       <Label htmlFor="name">Full Name *</Label>
                       <Input
+                         className="bg-white "
                         id="name"
                         name="user_name"
                         type="text"
@@ -157,6 +158,7 @@ function Contact() {
                     <div className="space-y-2">
                       <Label htmlFor="user_phone">Contact No *</Label>
                       <Input
+                        className="bg-white "
                         id="user_phone"
                         name="user_phone"
                         type="text"
@@ -168,6 +170,7 @@ function Contact() {
                   <div className="space-y-2">
                     <Label htmlFor="title">Email *</Label>
                     <Input
+                      className="bg-white "
                       id="email"
                       name="user_email"
                       type="email"
@@ -178,10 +181,11 @@ function Contact() {
                   <div className="space-y-2">
                     <Label htmlFor="message">Message *</Label>
                     <Textarea
+                    
                       id="message"
                       name="message"
                       rows={5}
-                      className="lg:min-h-[220px]"
+                      className="lg:min-h-[220px] bg-white "
                       placeholder="Write your message here..."
                       required
                     />
