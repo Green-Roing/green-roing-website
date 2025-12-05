@@ -33,7 +33,10 @@ const DownloadApp = () => {
   const handleAndroidDownload = () => {
     setLoading(true);
     setTimeout(() => {
-      window.open('https://play.google.com/store/apps/details?id=com.greenroing&hl=en', '_blank');
+      window.open(
+        "https://play.google.com/store/apps/details?id=com.greenroing&hl=en",
+        "_blank"
+      );
       setLoading(false);
     }, 600);
   };
@@ -44,7 +47,6 @@ const DownloadApp = () => {
       className="py-20 px-4 bg-gradient-to-r from-green-600 to-green-700 text-white"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
-        
         {/* Left: Content */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -54,59 +56,61 @@ const DownloadApp = () => {
         >
           <Smartphone className="h-16 w-16 mx-auto md:mx-0 mb-6" />
           <h2 className="text-4xl font-bold mb-4">Download Our App</h2>
-          
+
           <p className="text-xl mb-8 max-w-2xl">
-            Experience our waste management platform - schedule pickups, connect with recyclers, and contribute to a sustainable future
+            Experience our waste management platform - schedule pickups, connect
+            with recyclers, and contribute to a sustainable future
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 md:justify-start justify-center">
-
-            {/* Android Button With Loader */}
-            <Button
-              variant="secondary"
-              size="lg"
-              className="text-lg px-8 py-6 flex items-center"
-              onClick={handleAndroidDownload}
-              disabled={loading}
+          <div className="flex flex-col sm:flex-row gap-5 md:justify-start justify-center">
+            {/* Android Button */}
+            <a
+              href="https://play.google.com/store/apps/details?id=com.greenroing&hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center bg-black text-white px-6 py-4 rounded-xl font-bold transition-transform hover:-translate-y-1 shadow-lg"
             >
-              {loading ? (
-                <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-2 border-t-transparent border-white mr-2"></div>
-                  Opening Play Store...
-                </>
-              ) : (
-                <>
-                  <Download className="mr-2 h-5 w-5" />
-                  Download for Android
-                </>
-              )}
-            </Button>
+              <i className="fab fa-google-play text-3xl mr-4"></i>
+              <div>
+                <div className="text-xs opacity-80">Get it on</div>
+                <div className="text-base">Google Play</div>
+              </div>
+            </a>
 
             {/* iOS Button */}
-            <Button 
-              variant="secondary" 
-              size="lg" 
-              className="text-lg px-8 py-6"
+            <button
               onClick={() => setShowIOSModal(true)}
+              className="flex items-center bg-black text-white px-6 py-4 rounded-xl font-bold transition-transform hover:-translate-y-1 shadow-lg border-none cursor-pointer"
             >
-              <Download className="mr-2 h-5 w-5" />
-              Download for iOS
-            </Button>
+              <i className="fab fa-apple text-3xl mr-4"></i>
+              <div>
+                <div className="text-xs opacity-80">Download on the</div>
+                <div className="text-base">App Store</div>
+              </div>
+            </button>
           </div>
         </motion.div>
 
-        {/* Right: App Image */}
+        {/* Right: App Video */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center md:justify-end"
+          className="flex justify-center "
         >
-          <img
-            src="/appImage.png"
-            alt="App Preview"
-            className="w-full max-w-sm md:max-w-md rounded-xl shadow-lg object-cover"
-          />
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 border border-white/20">
+            <video
+              controls
+              className="w-56 h-auto mx-auto rounded-xl shadow-2xl"
+              poster="/app-poster.png"
+            >
+              <source
+                src="https://github.com/GreenRoing/gr-app/releases/download/video/androidVideo.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </motion.div>
       </div>
 
@@ -120,12 +124,12 @@ const DownloadApp = () => {
             >
               <X className="h-6 w-6" />
             </button>
-            
+
             <div className="p-6">
               <h2 className="text-center text-xl font-bold text-gray-900 mb-6">
                 Download Green Roing for iOS
               </h2>
-              
+
               <div className="space-y-6">
                 {/* Step 1 */}
                 <div className="flex items-start space-x-4 p-4 bg-blue-50 rounded-lg">
@@ -133,7 +137,9 @@ const DownloadApp = () => {
                     1
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-2">Download TestFlight</h3>
+                    <h3 className="font-semibold text-gray-900 mb-2">
+                      Download TestFlight
+                    </h3>
                     <p className="text-sm text-gray-600 mb-3">
                       First, install TestFlight from the App Store
                     </p>
@@ -141,7 +147,10 @@ const DownloadApp = () => {
                       onClick={() => {
                         setTestFlightLoading(true);
                         setTimeout(() => {
-                          window.open('https://apps.apple.com/in/app/testflight/id899247664', '_blank');
+                          window.open(
+                            "https://apps.apple.com/in/app/testflight/id899247664",
+                            "_blank"
+                          );
                           setTestFlightLoading(false);
                         }, 800);
                       }}
@@ -151,9 +160,13 @@ const DownloadApp = () => {
                       {testFlightLoading ? (
                         <div className="animate-spin rounded-full h-5 w-5 border-2 border-t-transparent border-blue-500 mr-2"></div>
                       ) : (
-                        <img src="/apple-app-store-icon.png" alt="TestFlight" className="w-5 h-5 mr-2" />
+                        <img
+                          src="/apple-app-store-icon.png"
+                          alt="TestFlight"
+                          className="w-5 h-5 mr-2"
+                        />
                       )}
-                      {testFlightLoading ? 'Opening...' : 'Get TestFlight'}
+                      {testFlightLoading ? "Opening..." : "Get TestFlight"}
                     </button>
                   </div>
                 </div>
@@ -164,7 +177,9 @@ const DownloadApp = () => {
                     2
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-2">Install Green Roing</h3>
+                    <h3 className="font-semibold text-gray-900 mb-2">
+                      Install Green Roing
+                    </h3>
                     <p className="text-sm text-gray-600 mb-3">
                       Then, use this link to install our app via TestFlight
                     </p>
@@ -172,7 +187,10 @@ const DownloadApp = () => {
                       onClick={() => {
                         setAppLoading(true);
                         setTimeout(() => {
-                          window.open('https://testflight.apple.com/join/gucdwdU8', '_blank');
+                          window.open(
+                            "https://testflight.apple.com/join/gucdwdU8",
+                            "_blank"
+                          );
                           setAppLoading(false);
                         }, 800);
                       }}
@@ -182,9 +200,13 @@ const DownloadApp = () => {
                       {appLoading ? (
                         <div className="animate-spin rounded-full h-5 w-5 border-2 border-t-transparent border-green-500 mr-2"></div>
                       ) : (
-                        <img src="/grLogo.png" alt="Green Roing" className="w-5 h-5 mr-2" />
+                        <img
+                          src="/grLogo.png"
+                          alt="Green Roing"
+                          className="w-5 h-5 mr-2"
+                        />
                       )}
-                      {appLoading ? 'Opening...' : 'Install App'}
+                      {appLoading ? "Opening..." : "Install App"}
                     </button>
                   </div>
                 </div>
