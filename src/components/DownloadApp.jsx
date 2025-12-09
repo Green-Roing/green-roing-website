@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,35 +11,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import {
-  Recycle,
-  Truck,
-  DollarSign,
-  Star,
-  Smartphone,
-  Download,
-  MessageCircle,
-  X,
-} from "lucide-react";
+import { Smartphone } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const DownloadApp = () => {
-  const [loading, setLoading] = useState(false);
-  const [showIOSModal, setShowIOSModal] = useState(false);
-  const [testFlightLoading, setTestFlightLoading] = useState(false);
-  const [appLoading, setAppLoading] = useState(false);
-  const downloadRef = useRef(null);
-
-  const handleAndroidDownload = () => {
-    setLoading(true);
-    setTimeout(() => {
-      window.open(
-        "https://play.google.com/store/apps/details?id=com.greenroing&hl=en",
-        "_blank"
-      );
-      setLoading(false);
-    }, 600);
-  };
 
   return (
     <section
@@ -78,16 +53,18 @@ const DownloadApp = () => {
             </a>
 
             {/* iOS Button */}
-            <button
-              onClick={() => setShowIOSModal(true)}
-              className="flex items-center bg-black text-white px-6 py-4 rounded-xl font-bold transition-transform hover:-translate-y-1 shadow-lg border-none cursor-pointer"
+            <a
+              href="https://apps.apple.com/in/app/green-roing/id6754807826"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center bg-black text-white px-6 py-4 rounded-xl font-bold transition-transform hover:-translate-y-1 shadow-lg"
             >
               <i className="fab fa-apple text-3xl mr-4"></i>
               <div>
                 <div className="text-xs opacity-80">Download on the</div>
                 <div className="text-base">App Store</div>
               </div>
-            </button>
+            </a>
           </div>
         </motion.div>
 
@@ -114,107 +91,7 @@ const DownloadApp = () => {
         </motion.div>
       </div>
 
-      {/* iOS Download Modal */}
-      {showIOSModal && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-md w-full relative">
-            <button
-              onClick={() => setShowIOSModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-            >
-              <X className="h-6 w-6" />
-            </button>
 
-            <div className="p-6">
-              <h2 className="text-center text-xl font-bold text-gray-900 mb-6">
-                Download Green Roing for iOS
-              </h2>
-
-              <div className="space-y-6">
-                {/* Step 1 */}
-                <div className="flex items-start space-x-4 p-4 bg-blue-50 rounded-lg">
-                  <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">
-                    1
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-2">
-                      Download TestFlight
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-3">
-                      First, install TestFlight from the App Store
-                    </p>
-                    <button
-                      onClick={() => {
-                        setTestFlightLoading(true);
-                        setTimeout(() => {
-                          window.open(
-                            "https://apps.apple.com/in/app/testflight/id899247664",
-                            "_blank"
-                          );
-                          setTestFlightLoading(false);
-                        }, 800);
-                      }}
-                      disabled={testFlightLoading}
-                      className="inline-flex items-center px-4 py-2 border-2 border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 hover:scale-105 transition-all duration-200 disabled:opacity-50"
-                    >
-                      {testFlightLoading ? (
-                        <div className="animate-spin rounded-full h-5 w-5 border-2 border-t-transparent border-blue-500 mr-2"></div>
-                      ) : (
-                        <img
-                          src="/apple-app-store-icon.png"
-                          alt="TestFlight"
-                          className="w-5 h-5 mr-2"
-                        />
-                      )}
-                      {testFlightLoading ? "Opening..." : "Get TestFlight"}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Step 2 */}
-                <div className="flex items-start space-x-4 p-4 bg-green-50 rounded-lg">
-                  <div className="flex-shrink-0 w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold">
-                    2
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-2">
-                      Install Green Roing
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-3">
-                      Then, use this link to install our app via TestFlight
-                    </p>
-                    <button
-                      onClick={() => {
-                        setAppLoading(true);
-                        setTimeout(() => {
-                          window.open(
-                            "https://testflight.apple.com/join/gucdwdU8",
-                            "_blank"
-                          );
-                          setAppLoading(false);
-                        }, 800);
-                      }}
-                      disabled={appLoading}
-                      className="inline-flex items-center px-4 py-2 border-2 border-green-500 text-green-500 rounded-lg hover:bg-green-50 hover:scale-105 transition-all duration-200 disabled:opacity-50"
-                    >
-                      {appLoading ? (
-                        <div className="animate-spin rounded-full h-5 w-5 border-2 border-t-transparent border-green-500 mr-2"></div>
-                      ) : (
-                        <img
-                          src="/grLogo.png"
-                          alt="Green Roing"
-                          className="w-5 h-5 mr-2"
-                        />
-                      )}
-                      {appLoading ? "Opening..." : "Install App"}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };
