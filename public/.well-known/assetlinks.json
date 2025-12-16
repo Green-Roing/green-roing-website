@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.greenroing",
+      "sha256_cert_fingerprints": [
+        "F8:BB:07:6B:86:ED:68:E9:37:60:C1:41:C9:8E:CE:ED:F7:4A:66:A1:6E:24:FA:03:BB:01:70:00:2B:B4:5D:2E",
+        "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"
+      ]
+    }
+  }
+]
